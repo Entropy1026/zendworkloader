@@ -1,0 +1,42 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('WorkLoader')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+        
+        <!-- Le styles -->
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+            ->prependStylesheet($this->basePath('css/style.css'))
+            ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+            ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+        ?>
+
+        <!-- Scripts -->
+        <?= $this->headScript()
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery-3.1.0.min.js'))
+        ?>
+    </head>
+    <body>                     
+    <nav style="padding-left:21%; padding-right:21%;">
+        <div class="nav nav-tabs center" id="nav-tab" role="tablist" >
+            <a class="nav-item nav-link active" id="nav-home-tab" href="<?= $this->url('workload') ?>" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+            <a class="nav-item nav-link" id="nav-profile-tab"  href="<?= $this->url('home') ?>" role="tab" aria-controls="nav-profile" aria-selected="false">Settings</a>
+        </div>
+    </nav>
+        <div class="container">
+            <?= $this->content ?>
+            <hr>
+            <footer>
+                <p>&copy; 2005 - <?= date('Y') ?> by Entropy. All rights reserved.</p>
+            </footer>
+        </div>
+        <?= $this->inlineScript() ?>
+    </body>
+</html>
