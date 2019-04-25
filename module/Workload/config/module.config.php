@@ -1,14 +1,21 @@
 <?php 
 namespace Workload;
 
-use Zend\Router\Http\Literal;
-use Zend\ServiceManager\Factory\InvokableFactory;
+ use Zend\Router\Http\Literal;
+ use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
-    
+    'service_manager' => [
+        'aliases' => [
+            Model\PostRepositoryInterface::class => Model\PostRepository::class,
+        ],
+        'factories' => [
+            Model\PostRepository::class => InvokableFactory::class,
+        ],
+    ],
     'controllers' => [
         'factories' => [
-            Controller\WorklistController::class => InvokableFactory::class,
+            Controller\WorklistController::class => Factory\WorklistControllerFactory::class,
         ],
     ],
     // This lines opens the configuration for the RouteManager
